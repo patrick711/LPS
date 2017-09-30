@@ -5,6 +5,7 @@ Django==1.11.3
 django-localflavor==1.5.2
 django-localflavor-us==1.1
 Faker==0.7.17
+gunicorn==19.7.1
 olefile==0.44
 Pillow==4.2.1
 pycparser==2.18
