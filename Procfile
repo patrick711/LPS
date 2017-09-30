@@ -1,1 +1,1 @@
-"web: gunicorn LPS.wsgi" 
+"web: gunicorn LPS.wsgi"  
