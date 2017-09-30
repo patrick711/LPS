@@ -1,0 +1,13 @@
+{% extends "scientist/scientist_base.html"%}
+
+{%block body_block %}
+<h1>
+Create Student
+</h1>
+ <form method="post"  enctype="multipart/form-data">
+   {% csrf_token %}
+   {{ form.as_p}}
+   <input type="submit" class="btn btn-primary" value="Submit">
+   <a class="btn btn-success" href="{% url 'teacher:students_list' %}">Cancel</a><br><br>
+ </form>
+{%endblock%}

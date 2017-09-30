@@ -1,0 +1,94 @@
+{% extends "registration/base.html" %}
+{% block body_block %}
+{% load staticfiles %}
+<div class="container">
+  <div class="jumbotron">
+    <!-- <img src="{% static "images/LPSlogo-banner.png" %}" alt="Uh Oh, didn't show!"> -->
+    {% if user.is_authenticated %}
+
+        <!-- <div class="container"> -->
+          {% if userinfo %}
+                {% for myuser in userinfo %}
+                  {% if myuser.is_active%}
+                    <table  >
+                      <tr valign="top">
+
+                        {% if myuser.is_scientist%}
+                        <td width="200">
+                          <div >
+                              <h4>Welcome Scientist</h4>
+                              {% if myuser.is_matched and not myuser.is_being_matched %}
+                                <a class="btn btn-primary" href="{% url 'scientist:students_list' %}">View Student Info</a><br><br>
+                              {%else%}
+                                <a class="btn btn-primary" href="#">Request to be Matched</a><br><br>
+                              {% endif %}
+                              <a class="btn btn-primary" href="{% url 'scientist:list' %}">Edit Mailing Address</a><br><br>
+                              <a class="btn btn-primary" href="{% url 'scientist:letter_list'%}">View/Upload Letters</a><br><br>
+                              <!-- <a class="btn btn-primary" href="#">Contact Coordinator</a><br><br> -->
+
+                          </div>
+                        </td>
+                        {% endif %}
+
+                        {% if myuser.is_coordinator%}
+
+                        <td width="200" style="padding-left:20px; padding-right:20px">
+                          <div >
+                              <h4>Welcome Coordinator</h4>
+                              <a class="btn btn-success" href="{% url 'Coordinator:students_list' %}">View Matched Students</a><br><br>
+                              <a class="btn btn-success" href="{% url 'Coordinator:unmatched_students_list' %}">View UnMatched Students</a><br><br>
+                              <!-- <a class="btn btn-success" href="#">Remove Scientist</a><br><br>
+                              <a class="btn btn-success" href="#">Match Scientist</a><br><br>
+                              <a class="btn btn-success" href="#">Contact teacher and Scientist</a><br><br> -->
+                          </div>
+                        </td>
+                        {% endif %}
+
+                      {% if myuser.is_teacher%}
+
+                      <td width="200">
+                        <div >
+                          <h4>Welcome Teacher</h4>
+                          <table>
+                            <tr>
+                              <!-- <td style="padding-right:20px">
+                                <a class="btn btn-info" href="#">Upload Class Roster</a><br><br>
+                                <a class="btn btn-info" href="#">View classroom matches</a><br><br>
+                                <a class="btn btn-info" href="#">Mark letters as received/sent</a><br><br>
+                                <a class="btn btn-info" href="#">Add new Student</a><br><br>
+
+                              </td> -->
+                              <td>
+                                <a class="btn btn-info" href="{% url 'teacher:students_list'%}">Students</a><br><br>
+                                <a class="btn btn-info" href="{% url 'teacher:tletter_list'%}">View/Upload Letters</a><br><br>
+                                <!-- <a class="btn btn-info" href="#">Track Expenses</a><br><br>
+                                <a class="btn btn-info" href="#">Contact Coordinator</a><br><br> -->
+
+                              </td>
+                            </tr>
+                          </table>
+
+                        </div>
+                      </td>
+                      {% endif %}
+                    </tr>
+                  </table>
+
+                  {% else %}
+                      <h2>Your account has not been activated yet!</h2>
+                  {% endif %}
+                {% endfor %}
+
+          {% else %}
+            <p>Welcome Administrator! </p>
+          {% endif %}
+      </div>
+
+
+    {% else %}
+        <h2>Welcome to the site!</h2>
+    {% endif %}
+  <!-- </div> -->
+</div>
+
+{% endblock %}

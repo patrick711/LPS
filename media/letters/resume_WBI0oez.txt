@@ -1,0 +1,78 @@
+Patrick Chen
+Print Me - patrick711@gmail.com
+Employment
+2015-present
+Snr. Software Engineer
+SWK Technologies Inc
+I develop Custom Software and integrations for the Acumatica ERP System
+
+2010 - 2015
+Director of Engineering
+The Macabe Associates
+I work with consultants to flesh out business needs into feasible technical projects. I execute from conception through development, delivery, and support.
+
+2006 - 2010
+Software Engineer
+The Macabe Associates
+Rapidly prototype and build software to specification and provide technical support. Projects deal with ERP workflow, ETL, upgrade, and custom reports
+
+2003 - 2006
+IT Associate
+Ipas
+Developed internal .NET/SQL projects, implemented Sharepoint conversion, and provided general IT support
+
+Contact
+Here's how to get a hold of me.
+Email
+patrick711@gmail.com
+
+Find out more
+www.pschen.org
+
+LinkedIn
+www.linkedin.com/in/pschen
+
+GitHub
+github.com/patrick711
+
+Education
+University of Washington Seattle
+Certificate in Data Science 2016
+
+University of North Carolina Chapel Hill
+MS Information Science, 2004
+
+University of Washington
+BS Economics, 2002
+
+Certifications
+Acumatica Developer & Technical Administrator
+
+Skills
+Coding Skills
+C#,TSQL,PHP,VB,Java,Javascript,HTML,CSS,Javascript
+
+Technologies
+Visual Studio, Acumatica, REST/SOAP Webservices, MSSQL Server, SSIS, SSMS, JSON, Windows App Dev, Android
+
+General Expertise
+Solution design, ERP/CRM development, Database design, UX design, prototyping, production build, documentation, and customer support
+
+Projects
+I solve customer problems, here are examples.
+MAPADOC for Acumatica
+I developed an Acumatica EDI solution that pulls in EDI data over REST service,creates Sales Orders, and uploads invoice data to EDI Service C#/.Net ERP
+
+ERP SOAP integration
+I worked on a team building a PHP application that syncs inventory between a consumer facing application and the Acumatica ERP system. PHP
+
+Connectwise integration
+I developed a custom integration between the Acumatica ERP and the Connectwise MSP C#/.Net ERP
+
+Real-time Price translation
+A custom software package to provide real time UOM pricing translation throughout Sales process in Acumatica C#/.Net ERP
+
+Pro Bono DBA for Landesa
+Created a PHP transcription software package for in-field survey entry and output to .csv for analysis in SSPS. Currently on GitHub
+
+ 

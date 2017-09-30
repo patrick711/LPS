@@ -1,0 +1,24 @@
+{% extends "scientist/scientist_base.html"%}
+
+{%block body_block %}
+<h1>Address Info</h1>
+  <table class="table table-hover">
+    {%for scimailingaddress in scimailingaddresses %}
+
+      <tr><td>{{scimailingaddress.address_1}}</td></tr>
+      <tr><td>{{scimailingaddress.address_2}}</td></tr>
+      <tr><td>{{scimailingaddress.city}}</td></tr>
+      <tr><td>{{scimailingaddress.state}}</td></tr>
+      <tr><td>{{scimailingaddress.zip_code}}</td></tr>
+
+
+  </table>
+
+  <a class="btn btn-danger" href="{% url 'scientist:update' pk=scimailingaddress.pk%}">Update Address</a><br><br>
+  <a class="btn btn-danger" href="{% url 'scientist:delete' pk=scimailingaddress.pk%}">Delete Address</a><br>
+  {%endfor%}
+  {% if not scimailingaddresses%}
+    <a class="btn btn-danger" href="{% url 'scientist:create'%}">Create Address</a>
+  {%endif%}
+</ul>
+{%endblock%}

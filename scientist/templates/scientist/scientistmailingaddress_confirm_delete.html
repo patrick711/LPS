@@ -1,0 +1,15 @@
+{% extends "scientist/scientist_base.html"%}
+
+{%block body_block %}
+
+<h1>Delete {{scimailingaddress.address_1}} {{scimailingaddress.address_2}}
+{{scimailingaddress.city}}
+{{scimailingaddress.state}}
+{{scimailingaddress.zip_code}}?</h1>
+<form  method="post">
+  {% csrf_token %}
+  <input type="submit" class="btn btn-danger" value="Delete">
+  <a href="{% url 'scientist:list' %}">Cancel</a>
+</form>
+
+{%endblock%}

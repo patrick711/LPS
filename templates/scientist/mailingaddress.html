@@ -1,0 +1,18 @@
+{% extends 'registration/base.html' %}
+{% block body_block %}
+    <div class ="container">
+      {% if mailingaddress %}
+        <h1>Thank you for inputting an address</h1>
+      {% else %}
+      <h1>Fill out the mailing address</h1>
+
+      <form method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            {{mailingaddress_form.as_p}}
+            {% csrf_token %}
+            <input type="submit"class="btn btn-primary" value="mailingaddress">
+        </div>
+      </form>
+      {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "scientist/scientist_base.html"%}
+
+{%block body_block %}
+<h1>Teacher Letter Info</h1>
+
+    <table class="table table-hover">
+      <tr>
+        <th>Letter</th>
+        <th>Date of Upload</th>
+        <th>Scientist</th>
+        <th>Student</th>
+        <th>Date Sent</th>
+        <th>Date Received<th>
+
+      </tr>
+    {%for letter in letters_list %}
+      <tr>
+        <td>
+          {% if letter.letterfile.url%}
+          <a href="{{letter.letterfile.url}}" download>{{letter.description}}</a>
+          {%endif%}
+        </td>
+        <td>
+          {{letter.date_of_upload}}
+        </td>
+        <td>{{letter.scientist}}</td>
+        <td>{{letter.student}}</td>
+        <td>{{letter.sent_date}}</td>
+        <td>{{letter.received_date}}</td>
+        <td><a class = "btn btn-danger" href="{% url 'teacher:update_letter' pk=letter.pk %}">Mark Received</a></td>
+      </tr>
+  {%endfor%}
+  </table>
+  <a class="btn btn-danger" href="{% url 'teacher:add_letter'%}">Upload Letter</a>
+
+{%endblock%}

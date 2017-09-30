@@ -1,0 +1,17 @@
+{% extends "scientist/scientist_base.html"%}
+
+{%block body_block %}
+<h1>
+{% if not form.instance.pk %}
+Create Mailing Address
+{% else %}
+  Update Mailing Address
+
+{%endif%}
+</h1>
+ <form method="post">
+   {% csrf_token %}
+   {{ form.as_p}}
+   <input type="submit" class="btn btn-primary" value="Save" >
+ </form>
+{%endblock%}
