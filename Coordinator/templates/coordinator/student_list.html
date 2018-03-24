@@ -1,6 +1,7 @@
 {% extends "scientist/scientist_base.html"%}
 
 {%block body_block %}
+
 {%with students|first as stud%}
 {% if stud.scientist == None %}
 <h2>Unmatched Students</h2>

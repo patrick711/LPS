@@ -44,7 +44,11 @@ INSTALLED_APPS = [
     'teacher',
     'Letters',
     'Students',
-    'Coordinator'
+    'Coordinator',
+    'django_tables2',
+    'crispy_forms',
+    'bootstrap3',
+
 ]
 
 MIDDLEWARE = [

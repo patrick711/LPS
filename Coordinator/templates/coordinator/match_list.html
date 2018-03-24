@@ -1,0 +1,20 @@
+{% extends "scientist/scientist_base.html"%}
+{% load render_table from django_tables2 %}
+{% load querystring from django_tables2 %}
+{% load bootstrap3 %}
+
+{%block body_block %}
+<h1>All Matches</h1>
+<br>
+<a href="{% querystring '_export'='csv' %}">Export to CSV</a>
+
+{% if filter %}
+    <form action="" method="get" class="form form-inline">
+      {{filter.form.as_table}}
+        <!-- {% bootstrap_form filter.form layout='inline' %} -->
+        {% bootstrap_button 'filter' %}
+    </form>
+{% endif %}
+{% render_table table %}
+
+{%endblock%}

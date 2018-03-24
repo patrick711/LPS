@@ -35,11 +35,11 @@
                         <td width="200" style="padding-left:20px; padding-right:20px">
                           <div >
                               <h4>Welcome Coordinator</h4>
-                              <a class="btn btn-success" href="{% url 'Coordinator:students_list' %}">View Matched Students</a><br><br>
-                              <a class="btn btn-success" href="{% url 'Coordinator:unmatched_students_list' %}">View UnMatched Students</a><br><br>
-                              <!-- <a class="btn btn-success" href="#">Remove Scientist</a><br><br>
-                              <a class="btn btn-success" href="#">Match Scientist</a><br><br>
-                              <a class="btn btn-success" href="#">Contact teacher and Scientist</a><br><br> -->
+
+                              <a class="btn btn-success" href="{% url 'Coordinator:students' %}">View Students</a><br><br>
+                              <a class="btn btn-success" href="{% url 'Coordinator:scientists' %}">View Scientists</a><br><br>
+                              <a class="btn btn-success" href="{% url 'Coordinator:all_matches' %}">View All Matches</a><br><br>
+
                           </div>
                         </td>
                         {% endif %}

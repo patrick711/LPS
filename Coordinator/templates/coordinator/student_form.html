@@ -2,12 +2,12 @@
 
 {%block body_block %}
 <h1>
-Set Scientist
+Set Match
 </h1>
  <form method="post"  enctype="multipart/form-data">
    {% csrf_token %}
    {{ form.as_p}}
    <input type="submit" class="btn btn-primary" value="Save">
-   <a class="btn btn-success" href="{% url 'Coordinator:students_list' %}">Cancel</a><br><br>
+   <a class="btn btn-success" href="{% url 'Coordinator:scientists' %}">Cancel</a><br><br>
  </form>
 {%endblock%}

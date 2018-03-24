@@ -20,6 +20,10 @@ class ScientistMailingAddress(models.Model):
         # Built-in attribute of django.contrib.auth.models.User !
         return self.user.username
 
+class Scientists(models.Model):
+    user=models.OneToOneField(User)
+
+
 def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
     return 'letters/user_{0}/{1}'.format(instance.user, filename)
