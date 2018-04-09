@@ -146,3 +146,4 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 LOGIN_URL = '/basic_app/user_login'
+CRISPY_TEMPLATE_PACK = 'uni_form'

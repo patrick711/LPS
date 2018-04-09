@@ -15,3 +15,6 @@ class TeacherLetters(models.Model):
     def __str__(self):
         # Built-in attribute of django.contrib.auth.models.User !
         return self.user.username
+
+class Teachers(models.Model):
+    user=models.OneToOneField(UserProfileInfo)

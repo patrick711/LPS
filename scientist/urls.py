@@ -15,6 +15,8 @@ urlpatterns = [
     url(r'^letters',views.LettersListView.as_view(),name='letter_list'),
     url(r'^updateletter/(?P<pk>\d+)/$',views.LettersUpdateView.as_view(),name="update_letter"),
     url(r'^students',views.StudentsListView.as_view(),name='students_list'),
+    url(r'^requestmatch',views.ScientistRequestMatchCreateView.as_view(),name='RequestMatch'),
+    url(r'^requests',views.ScientistMatchRequestListView.as_view(),name='Requests'),
     # url(r'^studentinfo',views.StudentInfo.as_view(),name='studentinfo'),
 
     # url(r'^scientist/',views.index,name="index"),

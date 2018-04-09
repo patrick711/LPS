@@ -17,11 +17,15 @@
                         <td width="200">
                           <div >
                               <h4>Welcome Scientist</h4>
-                              {% if myuser.is_matched and not myuser.is_being_matched %}
-                                <a class="btn btn-primary" href="{% url 'scientist:students_list' %}">View Student Info</a><br><br>
+                              {% if  myuser.is_being_matched %}
+                                <h5>You have requested a match</h5>
                               {%else%}
-                                <a class="btn btn-primary" href="#">Request to be Matched</a><br><br>
+                                <h5>You are not currently being considered for a match</h5>
+
+
                               {% endif %}
+                              <a class="btn btn-primary" href="{% url 'scientist:RequestMatch' %}">Request to be Matched</a><br><br>
+                              <a class="btn btn-primary" href="{% url 'scientist:Requests' %}">Requests</a><br><br>                              
                               <a class="btn btn-primary" href="{% url 'scientist:list' %}">Edit Mailing Address</a><br><br>
                               <a class="btn btn-primary" href="{% url 'scientist:letter_list'%}">View/Upload Letters</a><br><br>
                               <!-- <a class="btn btn-primary" href="#">Contact Coordinator</a><br><br> -->
@@ -38,7 +42,9 @@
 
                               <a class="btn btn-success" href="{% url 'Coordinator:students' %}">View Students</a><br><br>
                               <a class="btn btn-success" href="{% url 'Coordinator:scientists' %}">View Scientists</a><br><br>
+                              <a class="btn btn-success" href="{% url 'Coordinator:teachers' %}">View Teachers</a><br><br>
                               <a class="btn btn-success" href="{% url 'Coordinator:all_matches' %}">View All Matches</a><br><br>
+                              <a class="btn btn-success" href="{% url 'Coordinator:BulkUpload' %}">Bulk Upload</a><br><br>
 
                           </div>
                         </td>

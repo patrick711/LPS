@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django_localflavor_us.models import USStateField
 from registration.models import UserProfileInfo
 from Letters.models import Letter
+from Students.models import Student
 
 # Create your models here.
 class ScientistMailingAddress(models.Model):
@@ -27,6 +28,19 @@ class Scientists(models.Model):
 def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
     return 'letters/user_{0}/{1}'.format(instance.user, filename)
+
+class MatchRequest(models.Model):
+    scientist = models.ForeignKey(UserProfileInfo,related_name='Requesting_scientist',blank=True,null=True,
+        limit_choices_to={'is_scientist':True})
+    creationDate = models.DateField(auto_now_add=True)
+    fulfilledDate = models.DateField(auto_now_add=False,null=True)
+    student = models.ForeignKey(Student,related_name='Matched_student',blank=True,null=True)
+    isPending = models.BooleanField(default=True)
+    startingDate = models.DateField(auto_now_add=False,null=True)
+    def __str__(self):
+        return self.scientist.user.username
+
+
 
 # class ScientistLetters(models.Model):
 #     user = models.ForeignKey(User)

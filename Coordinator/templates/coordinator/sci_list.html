@@ -10,10 +10,10 @@
 
 <a href="{% querystring '_export'='csv' %}">Export to CSV</a>
 
-<hr><h4>Filter</h4>
+<hr>
 {% if filter %}
     <form action="" method="get" class="form form-inline">
-      {{filter.form.as_table}}
+      {{filter.form.as_p}}
         <!-- {% bootstrap_form filter.form layout='inline' %} -->
         {% bootstrap_button 'filter' %}
     </form>

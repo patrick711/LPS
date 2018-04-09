@@ -3,14 +3,44 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic import (View,TemplateView,ListView,DetailView,
     CreateView,UpdateView,DeleteView)
 from django.http import HttpResponseRedirect
+from django_filters.views import FilterView
+from django_tables2.views import SingleTableMixin
+from django_tables2.export.views import ExportMixin
+from django_filters import rest_framework as filters
 
-from scientist.forms import ScientistMailingAddressForm,ScientistLettersForm
-from scientist.models import ScientistMailingAddress
+from scientist.forms import ScientistMailingAddressForm,ScientistLettersForm,ScientistMatchRequestForm
+from scientist.models import ScientistMailingAddress,Scientists, MatchRequest
 from registration.models import UserProfileInfo
 from Students.models import Student
 from Letters.models import Letter
+from scientist.tables import MatchRequestTable
 
 # Create your views here.
+class ScientistRequestMatchCreateView(CreateView):
+    model = MatchRequest
+    #fields=('startingDate',)
+    success_url = reverse_lazy('scientist:Requests')
+    form_class = ScientistMatchRequestForm
+    def form_valid(self,form):
+        obj = form.save(commit=False)
+        self.object = obj
+        obj.scientist = UserProfileInfo.objects.get(user=self.request.user)
+        obj.isPending = True
+        obj.save()
+        return super(ScientistRequestMatchCreateView,self).form_valid(form)
+
+class ScientistMatchRequestListView(ExportMixin,SingleTableMixin, FilterView):
+    table_class = MatchRequestTable
+    model = MatchRequest
+    template_name = 'scientist/matchrequest_list.html'
+    export_name = 'requests'
+    filter_fields = {'scientist':['exact'],'isPending':['exact'], 'startingDate':['year','year__gt','year__lt']}
+    #filter_fields = ('scientist','student','creationDate')
+    # def get_queryset(self):
+    #     return MatchRequest.objects.filter(scientist=self.request.user.id)
+    def get_queryset(self):
+        print (self.request.user.id)
+        return MatchRequest.objects.filter(scientist=UserProfileInfo.objects.get(user=self.request.user))
 
 class ScientistMailingAddressCreateView(CreateView):
     model = ScientistMailingAddress

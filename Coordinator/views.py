@@ -7,18 +7,29 @@ from django_filters import rest_framework as filters
 from django.core.urlresolvers import reverse_lazy
 
 from Coordinator.forms import CoordinatorStudentForm,MatchScientist
-from Coordinator.tables import StudentTable,SciTable,MatchTable
+from Coordinator.tables import StudentTable,SciTable,MatchTable,TeachTable
 from registration.models import UserProfileInfo
 from Coordinator.filters import StudentListFilter,SciListFilter
 from Students.models import Student
 from scientist.models import Scientists
-from Coordinator.models import Match
+from Coordinator.models import Match, CSVFile
 
 # Create your views here.
+
+class BulkUploadView(CreateView):
+    model = CSVFile
+    context_object_name = 'student_list'
+    # fields=('letterfile',)
+    success_url = reverse_lazy('Coordinator:students')
+    fields = ['csv_file',]
+    #form_class = ScientistLettersForm
+    # print(self.kwargs.get('pk'))
+
+
 class DeleteMatch(DeleteView):
     model = Match
     template_name = 'coordinator/del_match.html'
-    
+
 
 class MakeMatch(CreateView):
     model = Match
@@ -38,6 +49,7 @@ class FilteredMatches(ExportMixin,SingleTableMixin, FilterView):
     filter_fields = {'scientist':['exact'],'student':['exact'], 'creationDate':['year','year__gt','year__lt']}
     #filter_fields = ('scientist','student','creationDate')
 
+
 class FilteredSciListView(ExportMixin,SingleTableMixin, FilterView):
     table_class = SciTable
     model = UserProfileInfo
@@ -45,17 +57,29 @@ class FilteredSciListView(ExportMixin,SingleTableMixin, FilterView):
     #filterset_class = SciListFilter
     export_name= 'Scientists'
     filter_fields = {
-    'user':['exact'],'user__email':['contains'],'is_matched':['exact']
+    'user':['exact'],'user__email':['contains'],'is_matched':['exact'], 'is_being_matched':['exact'],
     }
+
     #filter_backends = (filters.DjangoFilterBackend,)
 
     def get_queryset(self):
     #     # print(self.request.user.pk)
 #         print(self.request.user.email)
          return UserProfileInfo.objects.exclude(is_scientist = False)
-    #
-    # def get_context_data(self, **kwargs)
-    #     data = super().get_context_data(**kwars)
+
+
+class FilteredTeachListView(ExportMixin,SingleTableMixin, FilterView):
+    table_class = TeachTable
+    model = UserProfileInfo
+    template_name = 'coordinator/teach_list.html'
+    #filterset_class = SciListFilter
+    export_name= 'Teachers'
+    filter_fields = {
+    'user':['exact'],'user__email':['contains'],
+    }
+
+    def get_queryset(self):
+         return UserProfileInfo.objects.exclude(is_teacher = False)
 
 class FilteredStudentListView(ExportMixin,SingleTableMixin, FilterView):
     table_class = StudentTable

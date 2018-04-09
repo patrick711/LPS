@@ -22,6 +22,15 @@ class SciTable(tables.Table):
         template_name = 'django_tables2/bootstrap.html'
         fields = ['user','user.email','is_being_matched','is_matched']
 
+class TeachTable(tables.Table):
+
+    class Meta:
+        model = UserProfileInfo
+        attrs = {"class": "table table-striped table-bordered table-lg table-hover"}
+        template_name = 'django_tables2/bootstrap.html'
+        fields = ['user','user.email',]
+
+
 class StudentTable(tables.Table):
 
   class Meta:
